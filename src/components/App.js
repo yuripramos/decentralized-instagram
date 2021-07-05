@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Web3 from 'web3';
 import Identicon from 'identicon.js';
 import './App.css';
@@ -7,29 +7,22 @@ import Navbar from './Navbar'
 import Main from './Main'
 
 
-class App extends Component {
+const App = () => {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      account: '',
-    }
-  }
+  const [account, setAccount] = useState('');
+  const [loading, setLoading] = useState(false)
 
-  render() {
-    return (
-      <div>
-        <Navbar account={this.state.account} />
-        { this.state.loading
-          ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
-          : <Main
-            // Code...
-            />
-          }
+  return (
+    <div>
+      <Navbar account={account} />
+      {loading
+        ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
+        : <Main
+          // Code...
+          />
         }
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
