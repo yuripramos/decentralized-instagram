@@ -1,6 +1,6 @@
 # 🌐 decentralized-instagram
 
-Instagram clone build with blockchain
+Instagram clone build with Ethereum blockchain, W3JS, Solidity and React.
 
 ## Specs
 
@@ -10,8 +10,20 @@ Instagram clone build with blockchain
 | 🍩  | **Ganache** A personal blockchain for Ethereum development you can use to deploy contracts, develop you applications |
 | 🍥  | **Truffle** Testing framework and asset pipeline for blockchains using the Ethereum Virtual Machine (EVM)            |
 | 🔓  | **Solidity** Solidity is an object-oriented, high-level language for implementing smart contracts                    |
-| 🗝   | **IPFS** A peer-to-peer hypermedia protocol                                                                          |
+| 🗝   | **IPFS** A peer-to-peer hypermedia protocol                                                                         |
 | 🦊  | **Metamask** Crypto Wallet friendly for developers                                                                   |
+
+## Working video
+https://monosnap.com/file/sOuMFFLAjD4V9cjOY2hExxdFEmHt7h
+
+## Features
+
+|     | Features                                                                                                             |
+| --- | -------------------------------------------------------------------------------------------------------------------- |
+| ✅  | Upload media to a decentralized protocol using smart contracts on the blockchain                                      |
+| ✅  | Tip Authors with ETH for the most appealing/interesting pictures                                                     |
+| ✅  | Never lost the track of your images since it's written in smart contracts                                            |
+| ✅  | Web3JS to interact with ethereum network                                                                             |
 
 ## Project Worflow
 
