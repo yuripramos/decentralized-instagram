@@ -62,6 +62,9 @@ const App = () => {
         setImages(prevState => [...prevState, image])
       }
 
+      // Sort images. Show highest tipped images first
+      setImages(prevState => prevState.sort((a,b) => b.tipAmount - a.tipAmount ))
+
       setLoading(false)
     } else {
       window.alert('Decentragram contract not deployed to detect network.')
@@ -86,6 +89,13 @@ const App = () => {
     })
   }
 
+  const tipImageOwner = (id, tipAmount) => {
+    setLoading(true)
+    decentragram.methods.tipImageOwner(id).send({ from: account, value: tipAmount }).on('transactionHash', (hash) => {
+      setLoading(false)
+    })
+  }
+
   useEffect(() => {
     loadWeb3()
     loadBlockchainData()
@@ -100,6 +110,7 @@ const App = () => {
           captureFile={captureFile}
           uploadImage={uploadImage}
           images={images}
+          tipImageOwner={tipImageOwner}
           />
         }
     </div>
