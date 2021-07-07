@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import Identicon from 'identicon.js';
 
 const Main = ({ ...props }) =>  {
-    const inputDescription = useRef(null);
+    const [description, setDescription] = useState('')
     return (
       <div className="container-fluid mt-5">
         <div className="row">
@@ -12,7 +12,6 @@ const Main = ({ ...props }) =>  {
               <h2>Share Image</h2>
               <form onSubmit={(event) => {
                 event.preventDefault()
-                const description = inputDescription.value
                 props.uploadImage(description)
               }} >
                 <input type='file' accept=".jpg, .jpeg, .png, .bmp, .gif" onChange={props.captureFile} />
@@ -21,7 +20,7 @@ const Main = ({ ...props }) =>  {
                       <input
                         id="imageDescription"
                         type="text"
-                        ref={inputDescription}
+                        onChange={event => setDescription(event.target.value)}
                         className="form-control"
                         placeholder="Image description..."
                         required />
@@ -43,7 +42,7 @@ const Main = ({ ...props }) =>  {
                     </div>
                     <ul id="imageList" className="list-group list-group-flush">
                       <li className="list-group-item">
-                        <p class="text-center"><img src={`https://ipfs.infura.io/ipfs/${image.hash}`} style={{ maxWidth: '420px'}}/></p>
+                        <p className="text-center"><img src={`https://ipfs.infura.io/ipfs/${image.hash}`} style={{ maxWidth: '420px'}}/></p>
                         <p>{image.description}</p>
                       </li>
                       <li key={key} className="list-group-item py-2">

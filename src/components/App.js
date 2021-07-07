@@ -28,7 +28,6 @@ const App = () => {
 
     reader.onloadend = () => {
       setBuffer(Buffer(reader.result))
-      console.log('Buffer => ', buffer)
     }
   }
 
@@ -57,7 +56,12 @@ const App = () => {
       const decentragram = web3.eth.Contract(Decentragram.abi, networkData.address)
       setDecentragram(decentragram)
       const imagesCount = await decentragram.methods.imageCount().call()
-      setImages(imagesCount)
+
+      for (var i = 1; i <= imagesCount; i++) {
+        const image = await decentragram.methods.images(i).call()
+        setImages(prevState => [...prevState, image])
+      }
+
       setLoading(false)
     } else {
       window.alert('Decentragram contract not deployed to detect network.')
@@ -75,10 +79,10 @@ const App = () => {
         return
       }
 
-      // setLoading(true)
-      // decentragram.methods.uploadImage(result[0].hash, description).send({ from: account}).on('transactionHash', hash => {
-      //   setLoading(false)
-      // })
+      setLoading(true)
+      decentragram.methods.uploadImage(result[0].hash, description).send({ from: account }).on('transactionHash', hash => {
+        setLoading(false)
+      })
     })
   }
 
